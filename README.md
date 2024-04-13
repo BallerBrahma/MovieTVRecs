@@ -18,4 +18,9 @@
     - The '/recommendations' route accepts a POST request with a form submission containing a movie name.
     - It then calls the get_recommendations_with_overviews function to get recommendations for that movie and renders a 'recommendations.html' template with the recommendations
 
-- 
+- EnglishMovieRecs.ipynb:
+  - Data Loading and Preprocessing: You load a CSV file (english.csv) containing movie data into a Pandas DataFrame (combined_data). You then create a new column features that combines several columns (overview, genres, vote_average, popularity) into a single feature string for each movie.
+  - Feature Extraction: You use TF-IDF (Term Frequency-Inverse Document Frequency) vectorization to convert the textual features into a numerical format (tfidf_matrix) that can be used by machine learning models.
+  - Nearest Neighbors Model: You create a NearestNeighbors model (nn_model) to find similar movies based on their TF-IDF vectors. The model is fitted with the TF-IDF matrix.
+  - Recommendation Function: The get_recommendations_with_overviews function takes a movie name as input, retrieves its TF-IDF vector, and finds the nearest neighbors (similar movies) using the NearestNeighbors model. It returns a list of recommended movie titles.
+  - Flask Web Application: You create a Flask web application with two routes. The index route ('/') renders an HTML template (index.html) for the user to input a movie name. The /recommendations route processes the form submission, calls the get_recommendations_with_overviews function, and renders a template (recommendations.html) with the recommended movies.
