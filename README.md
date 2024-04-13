@@ -1,14 +1,5 @@
 # MovieTVRecs
 
-- EnglishMoviesRecs.ipynb:
-  - This project is a movie recommendation system implemented in Python using Flask.
-  - It uses a dataset of movies with features like overview, genres, vote average, and popularity.
-  - The TF-IDF (Term Frequency-Inverse Document Frequency) vectorizer from scikit-learn is used to convert text data into numerical form.
-  - Nearest Neighbors algorithm is used to find movies similar to a given movie based on their TF-IDF vector representations.
-  - The Flask web framework is used to create a simple web application where users can input a movie name and get a list of recommended movies.
-  - The recommendations are based on the movie's overview, genres, vote average, and popularity.
-
-
 - MovieRecsGenre.ipynb:
   - Data Loading: The project loads movie datasets for different genres from CSV files. It checks if the 'description' column exists in the dataset (except for the 'telugu' genre, which uses 'Overview' instead), and creates a new column 'features' that combines relevant columns like description, rating, director, and votes into a single text string.
   - TF-IDF Vectorization: For each genre, a TF-IDF vectorizer is created to convert the 'features' column into a TF-IDF matrix, which represents the importance of each word in the 'features' text relative to the entire dataset.
@@ -18,4 +9,13 @@
 
  
 - TvRecs.ipynb:
-  - 
+  - Data Processing: It starts by loading a CSV file (tvshows.csv) containing TV show data into a pandas DataFrame. It then creates a new column called 'features' that combines several columns (overview, vote_average, popularity, original_language) into a single string that represents the features of each TV show.
+  - TF-IDF Vectorization: It uses TfidfVectorizer from scikit-learn to convert the 'features' column into a TF-IDF matrix, which represents the importance of each word in the 'features' text relative to the entire dataset.
+  - Nearest Neighbors Model: It uses NearestNeighbors from scikit-learn to build a model that can find the nearest neighbors (similar TV shows) for a given TV show based on its TF-IDF representation. The model is fitted on the TF-IDF matrix.
+  - Recommendation Function: The get_recommendations_with_overviews function takes a TV show name as input, finds the TF-IDF representation of the input show, and then uses the nearest neighbors model to find similar TV shows. It returns a list of recommended TV show names.
+  - Flask Web Application: The project uses Flask to create a web application with two routes:
+    - The '/' route renders an index.html template, which is the homepage.
+    - The '/recommendations' route accepts a POST request with a form submission containing a movie name.
+    - It then calls the get_recommendations_with_overviews function to get recommendations for that movie and renders a 'recommendations.html' template with the recommendations
+
+- 
