@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TV Recommendations</title>
+</head>
+<body>
+    <h1>TV Recommendations</h1>
+    <h2>Recommendations for {{movie_name}}:</h2>
+    <ul>
+        {% for movie in recommendations %}
+        <li>{{ movie }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
